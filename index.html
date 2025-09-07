@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bharat Dhande — AI & ML Portfolio</title>
+  <meta name="description" content="Portfolio of Bharat Sanjay Dhande — AI/ML Engineer, projects, skills, education, and contact." />
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <!-- Or PNG for modern browsers -->
+<link rel="icon" type="image/png" sizes="32x32" href="Assets/icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="Assets/icon.png" />
+</head>
+
+<div class="ai-bg">
+  <canvas id="aiCanvas"></canvas>
+</div>
+
+<script>
+const canvas = document.getElementById("aiCanvas");
+const ctx = canvas.getContext("2d");
+let width, height;
+function resize() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+// Neural net effect
+const nodes = Array.from({ length: 60 }, () => ({
+  x: Math.random() * width,
+  y: Math.random() * height,
+  vx: (Math.random() - 0.5) * 0.6,
+  vy: (Math.random() - 0.5) * 0.6,
+}));
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+  for (let node of nodes) {
+    node.x += node.vx;
+    node.y += node.vy;
+    if (node.x < 0 || node.x > width) node.vx *= -1;
+    if (node.y < 0 || node.y > height) node.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = "#ff3b30";
+    ctx.fill();
+  }
+
+  // Draw connections
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      let dx = nodes[i].x - nodes[j].x;
+      let dy = nodes[i].y - nodes[j].y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 150) {
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(255, 59, 48," + (1 - dist / 150) + ")";
+        ctx.lineWidth = 1;
+        ctx.moveTo(nodes[i].x, nodes[i].y);
+        ctx.lineTo(nodes[j].x, nodes[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+
+<body data-resume="Assets\Bharat_Dhande_AIML.pdf">
+  <div id="page">
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="profile">
+        <img src="Assets/img2.png" alt="Portrait of Bharat Dhande" loading="lazy">
+        <h1>Bharat Sanjay Dhande</h1>
+        <p class="hero-sub">
+          <span id="skillAnimation" class="typing"></span>
+        </p>
+      </div>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#timeline">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <a id="downloadResume" class="btn primary" 
+           href="Assets/Bharat_dhande_AIML_intern.pdf" 
+           download>
+          Download Resume
+        </a>
+        <div class="small-buttons">
+          <a class="btn ghost" href="https://github.com/BharatDhande" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/bharat-dhande-b6108625a" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="contact">
+        <h3>Contact</h3>
+        <p><a href="mailto:bdhande45@gmail.com">bdhande45@gmail.com</a></p>
+      </div>
+
+      <footer class="sidebar-footer">
+        © <span id="year"></span> Bharat Sanjay Dhande
+      </footer>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="content">
+
+      <!-- About Section -->
+    <section id="about" class="card-section glass">
+  <h2>About Me</h2>
+  <p>
+    I am a final-year Computer Science student (B.E. - 2025) specializing in 
+    <b>Artificial Intelligence and Machine Learning</b>. I am passionate about designing 
+    intelligent systems and bringing innovative ideas to life—ranging from smart agriculture 
+    platforms to retrieval-augmented chatbots and computer vision applications.
+  </p>
+  <p>
+    Currently, I am interning as an <b>AI/ML Engineer</b>, where I work extensively on 
+    <b>Generative AI, Large Language Models (LLMs)</b>, and <b>Computer Vision</b>. 
+    My role involves experimenting with state-of-the-art architectures, fine-tuning models, 
+    and deploying solutions that balance performance with scalability.
+  </p>
+  <p>
+    My technical toolkit includes <b>Python, Flask, FastAPI, TensorFlow, PyTorch, 
+    OpenCV, and Scikit-learn</b>, with a strong foundation in data handling, 
+    model optimization, and end-to-end deployment. I focus on creating 
+    impactful, reliable, and user-centric AI solutions.
+  </p>
+</section>
+
+
+      <!-- Skills Section -->
+      <section id="skills" class="card-section glass">
+        <h2>Skills Snapshot</h2>
+        <div class="skills-row" id="skillChart"></div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="card-section glass">
+        <h2>Selected Projects</h2>
+        <div id="projectGrid" class="grid"></div>
+      </section>
+
+      <!-- Education -->
+      <section id="timeline" class="card-section glass">
+  <h2>Education & Timeline</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <h3>B.E. Computer Science (AI & ML)</h3>
+        <span class="institution">Saraswati College of Engineering</span>
+        <span class="year">Expected 2025</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <h3>HSC (12th)</h3>
+        <span class="institution">M.J. College, Jalgaon</span>
+        <span class="year">2021</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <h3>SSC (10th)</h3>
+        <span class="institution">Saraswati Vidya Mandir</span>
+        <span class="year">2019</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+     <form id="contactForm">
+  <input type="text" name="name" placeholder="Your Name" required />
+  <input type="email" name="email" placeholder="Your Email" required />
+  <textarea name="message" placeholder="Message" required></textarea>
+  <button type="submit" id="sendBtn">Send</button>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+
+<!-- Toast container -->
+<div id="toast"></div>
+
+
+      <footer class="site-footer">
+        <small>Built with HTML • CSS • JS — by Bharat Sanjay Dhande</small>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true"></div>
+</body>
+</html>
