@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   typeEffect();
 
   // Skills Bar Animation
-  const skillData = { "Python": 95, "ML": 88, "DL": 82, "NLP": 78, "openCV": 80, "Web Dev": 75 };
+  const skillData = { "Python": 95, "ML": 88, "DL": 82, "NLP": 78, "openCV": 80, "Pytorch": 75 };
   const skillChart = document.getElementById("skillChart");
   Object.entries(skillData).forEach(([name, val]) => {
     const el = document.createElement("div");
