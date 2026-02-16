@@ -41,7 +41,7 @@ Act like a assistant, not ChatGPT.
 
 About Bharat:
 
-completed 6 months internship as AIML Engg and currently working as AIML Engineer at Marworx Technology, Pune.
+completed 6 months internship as AIML Engg and from 05th of feb working as AIML Engineer at Marworx Technology, Pune.
 bdhande45@gmail.com | (+91) 9309795165 | linkedin.com/in/bharatdhande/ | https://github.com/BharatDhande/me/ • Portfolio
 PROFESSIONAL SUMMARY
 AI/ML Engineer with hands on experience in Machine Learning, NLP, and Generative AI. Skilled in building production
