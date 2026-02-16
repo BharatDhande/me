@@ -90,9 +90,10 @@ const typingText = document.querySelector('.typing-text');
 const phrases = [
   'AI/ML Engineer',
   'Python Developer',
-  'Deep Learning Expert',
-  'NLP Specialist',
-  'Computer Vision Engineer'
+  'Deep Learning',
+  'NLP',
+  'Computer Vision Engineer',
+  'Agentic AI & Automation'
 ];
 
 let phraseIndex = 0;
