@@ -4,6 +4,8 @@ import json
 from dotenv import load_dotenv
 from system_prompt import SYSTEM_PROMPT
 
+from datetime import datetime
+
 load_dotenv()
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
@@ -20,8 +22,9 @@ def stream_openrouter(user_msg, session_id):
 
     # Create new memory if session not exists
     if session_id not in sessions:
+        current_time = datetime.now().strftime("%A, %d %B %Y, %I:%M %p")
         sessions[session_id] = [
-            {"role": "system", "content": SYSTEM_PROMPT}
+            {"role": "system", "content": SYSTEM_PROMPT + f"\n\n Current Datetime:{current_time} (Asia/Kolkata)"}
         ]
 
     chat_memory = sessions[session_id]
