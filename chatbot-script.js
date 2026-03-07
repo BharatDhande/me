@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
 
-      const response = await fetch("https://register-approximately-dubai-kits.trycloudflare.com/chat", {
+      const response = await fetch("https://lets-par-theology-languages.trycloudflare.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
