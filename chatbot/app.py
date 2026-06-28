@@ -20,6 +20,14 @@ class Chat(BaseModel):
     session_id: str   # <-- added
 
 
+@app.get("/")
+async def home():
+    return {
+        "status": "running",
+        "message": "Chatbot API is live 🚀"
+    }
+
+
 @app.post("/chat")
 async def chat(req: Chat):
 
